@@ -11,16 +11,18 @@ export default defineConfig({
       devOptions: {
         enabled: true
       },
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+      includeAssets: ['favicon.svg', 'apple-touch-icon.png', 'maskable-icon-512x512.svg'],
       manifest: {
         name: 'sort it.',
         short_name: 'sort it.',
-        description: 'Your one-stop destination for all your needs. Fast, reliable, and always sorted.',
+        description: 'Premium Grocery & Essentials Delivery. Fast, reliable, and always sorted.',
         theme_color: '#F7C600',
         background_color: '#ffffff',
         display: 'standalone',
+        orientation: 'portrait',
+        dir: 'ltr',
         start_url: '/',
-        id: '/',
+        id: 'https://sort-it-05by.onrender.com/',
         scope: '/',
         icons: [
           {
@@ -40,7 +42,8 @@ export default defineConfig({
             type: 'image/png',
             purpose: 'maskable'
           }
-        ]
+        ],
+        categories: ['shopping', 'food', 'lifestyle']
       }
     })
   ]
