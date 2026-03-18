@@ -63,10 +63,10 @@ export default function Header() {
               <button className="p-1"><Menu size={24} className="text-gray-800" /></button>
               <div>
                 <h1 className="font-extrabold text-2xl tracking-tight text-primary">sort it.</h1>
-                <div className="flex items-center text-xs text-gray-600 font-bold gap-1 mt-0.5 max-w-[150px]">
-                  <MapPin size={12} className="text-primary flex-shrink-0" />
-                  <span className="truncate">Home - 123 sort it. Ave</span>
-                  <ChevronDown size={14} />
+                <div className="flex items-center text-[11px] text-gray-500 font-bold gap-1 mt-0.5">
+                  <MapPin size={10} className="text-primary flex-shrink-0" />
+                  <span className="truncate max-w-[120px]">Home - 123 sort it. Ave</span>
+                  <ChevronDown size={12} />
                 </div>
               </div>
             </div>

@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 export default function Cart() {
   const { isCartOpen, toggleCart, cartItems, updateQuantity, cartTotal, setCartItems } = useCart();
-  const { walletBalance, deductMoney, addresses, placeOrder } = useApp();
+  const { walletBalance, deductMoney, addresses, placeOrder, isLoggedIn } = useApp();
   const navigate = useNavigate();
   const [checkoutError, setCheckoutError] = useState('');
 
@@ -17,6 +17,11 @@ export default function Cart() {
 
   const handleCheckout = () => {
     setCheckoutError('');
+    if (!isLoggedIn) {
+      toggleCart();
+      navigate('/login');
+      return;
+    }
     if (!defaultAddress) {
       setCheckoutError('Please add a delivery address.');
       setTimeout(() => { toggleCart(); navigate('/addresses'); }, 1500);
@@ -151,10 +156,13 @@ export default function Cart() {
                   className="w-full bg-[#18A058] hover:bg-[#158C4D] text-white py-3.5 rounded-xl text-lg font-extrabold shadow-sm shadow-[#18A058]/20 transition-colors flex items-center justify-between px-6 mt-2"
                 >
                   <div className="flex flex-col text-left leading-tight">
-                    <span className="text-sm">${grandTotal.toFixed(2)}</span>
-                    <span className="text-[10px] uppercase tracking-wider font-bold">Total</span>
+                    <span className="text-sm font-bold">${grandTotal.toFixed(2)}</span>
+                    <span className="text-[10px] uppercase tracking-wider font-bold opacity-80">Total</span>
                   </div>
-                  <span className="flex items-center gap-2">Login to Proceed <ChevronRight size={18} /></span>
+                  <span className="flex items-center gap-2">
+                    {isLoggedIn ? 'Place Order' : 'Login to Proceed'} 
+                    <ChevronRight size={18} />
+                  </span>
                 </button>
               </div>
             )}
