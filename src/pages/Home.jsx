@@ -114,7 +114,9 @@ export default function Home() {
           </div>
           <div className="flex overflow-x-auto gap-4 scrollbar-hide pb-4 px-1 -mx-1 pr-6">
             {FRESH_VEGS.map(product => (
-              <ProductCard key={product.id} product={product} />
+              <div key={product.id} className="w-[160px] md:w-[200px] flex-shrink-0">
+                <ProductCard product={product} />
+              </div>
             ))}
             <div className="flex-shrink-0 flex items-center justify-center p-4 min-w-[120px]">
               <Link to="/all-items?category=Vegetables" className="flex flex-col items-center gap-2 text-primary hover:text-primary/80 transition-colors group">
@@ -134,7 +136,9 @@ export default function Home() {
           </div>
           <div className="flex overflow-x-auto gap-4 scrollbar-hide pb-4 px-1 -mx-1 pr-6">
             {SNACKS.map(product => (
-              <ProductCard key={product.id} product={product} />
+              <div key={product.id} className="w-[160px] md:w-[200px] flex-shrink-0">
+                <ProductCard product={product} />
+              </div>
             ))}
             <div className="flex-shrink-0 flex items-center justify-center p-4 min-w-[120px]">
               <Link to="/all-items?category=Snacks" className="flex flex-col items-center gap-2 text-primary hover:text-primary/80 transition-colors group">
@@ -154,7 +158,9 @@ export default function Home() {
           </div>
           <div className="flex overflow-x-auto gap-4 scrollbar-hide pb-4 px-1 -mx-1 pr-6">
             {BESTSELLERS.map(product => (
-              <ProductCard key={product.id} product={product} />
+              <div key={product.id} className="w-[160px] md:w-[200px] flex-shrink-0">
+                <ProductCard product={product} />
+              </div>
             ))}
             <div className="flex-shrink-0 flex items-center justify-center p-4 min-w-[120px]">
               <Link to="/all-items" className="flex flex-col items-center gap-2 text-primary hover:text-primary/80 transition-colors group">

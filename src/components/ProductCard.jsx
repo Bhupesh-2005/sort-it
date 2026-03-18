@@ -7,7 +7,7 @@ export default function ProductCard({ product }) {
   const quantity = cartItem?.quantity || 0;
 
   return (
-    <div className="bg-white rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden flex flex-col h-[280px] w-[160px] md:w-[200px] flex-shrink-0 relative group">
+    <div className="bg-white rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden flex flex-col h-[280px] w-full md:max-w-[220px] flex-shrink-0 relative group">
       {product.oldPrice && (
         <div className="absolute top-0 left-0 bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded-br-xl z-10">
           {Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)}% OFF
