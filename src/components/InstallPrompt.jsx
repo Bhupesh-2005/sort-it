@@ -45,7 +45,7 @@ export default function InstallPrompt() {
                 onClick={triggerInstall}
                 className="bg-primary hover:bg-primary/90 text-gray-900 px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2 transition-colors shadow-md"
               >
-                <Download size={16} /> Install
+                <Download size={16} /> Add to home screen
               </button>
             )}
             <button

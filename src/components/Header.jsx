@@ -7,7 +7,7 @@ import { useApp } from '../context/AppContext';
 
 export default function Header() {
   const { cartCount, toggleCart } = useCart();
-  const { walletBalance, user, installPrompt, installDismissed, isInstalled, triggerInstall } = useApp();
+  const { walletBalance, user, isLoggedIn, installPrompt, installDismissed, isInstalled, triggerInstall } = useApp();
   const navigate = useNavigate();
   const location = useLocation();
   const inputRef = useRef(null);
@@ -73,7 +73,9 @@ export default function Header() {
             
             {/* Action Icons */}
             <div className="flex items-center gap-4">
-              <Link to="/profile" className="p-1"><User size={24} className="text-gray-800" /></Link>
+              <Link to="/profile" className="p-1 text-gray-800" title={isLoggedIn ? 'Profile' : 'Sign In'}>
+                <User size={24} />
+              </Link>
               {/* Persistent install button (mobile) */}
               {!isInstalled && installDismissed && installPrompt && (
                 <motion.button
@@ -180,7 +182,7 @@ export default function Header() {
 
             <Link to="/profile" className="flex items-center flex-col justify-center hover:text-primary transition-colors">
               <User size={24} />
-              <span className="text-[10px] font-bold mt-1">Profile</span>
+              <span className="text-[10px] font-bold mt-1">{isLoggedIn ? 'Profile' : 'Sign In'}</span>
             </Link>
 
             {/* Persistent install button (desktop) */}
@@ -192,7 +194,7 @@ export default function Header() {
                 title="Install App"
                 className="flex items-center gap-1.5 text-sm font-bold text-primary border border-primary/30 bg-primary/5 hover:bg-primary/10 px-3 py-2 rounded-xl transition-colors"
               >
-                <Download size={16} /> Install
+                <Download size={16} /> Add to home screen
               </motion.button>
             )}
 

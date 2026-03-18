@@ -31,31 +31,33 @@ function App() {
         <Route path="/login" element={<Auth />} />
         <Route path="/signup" element={<Auth />} />
 
-        {/* Protected app shell */}
+        {/* Global app shell */}
         <Route
           path="/*"
           element={
-            <ProtectedRoute>
-              <div className="app-layout bg-gray-50 min-h-screen flex flex-col">
-                <Header />
-                <main className="main-content pb-20 flex-grow">
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/all-items" element={<AllItems />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/wallet" element={<Wallet />} />
-                    <Route path="/orders" element={<Orders />} />
-                    <Route path="/addresses" element={<AddressBook />} />
-                    <Route path="/payments" element={<Payments />} />
-                    <Route path="/support" element={<Support />} />
-                    <Route path="*" element={<Home />} />
-                  </Routes>
-                </main>
-                <Footer />
-                <Cart />
-                <InstallPrompt />
-              </div>
-            </ProtectedRoute>
+            <div className="app-layout bg-gray-50 min-h-screen flex flex-col">
+              <Header />
+              <main className="main-content pb-20 flex-grow">
+                <Routes>
+                  {/* Public routes */}
+                  <Route path="/" element={<Home />} />
+                  <Route path="/all-items" element={<AllItems />} />
+                  <Route path="/support" element={<Support />} />
+                  
+                  {/* Protected routes */}
+                  <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+                  <Route path="/wallet" element={<ProtectedRoute><Wallet /></ProtectedRoute>} />
+                  <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
+                  <Route path="/addresses" element={<ProtectedRoute><AddressBook /></ProtectedRoute>} />
+                  <Route path="/payments" element={<ProtectedRoute><Payments /></ProtectedRoute>} />
+                  
+                  <Route path="*" element={<Home />} />
+                </Routes>
+              </main>
+              <Footer />
+              <Cart />
+              <InstallPrompt />
+            </div>
           }
         />
       </Routes>
