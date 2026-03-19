@@ -3,7 +3,7 @@ import { X, Plus, Minus, ShoppingBag, MapPin, Wallet, ChevronRight } from 'lucid
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useApp } from '../context/AppContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Cart() {
   const { isCartOpen, toggleCart, cartItems, updateQuantity, cartTotal, setCartItems } = useCart();
@@ -14,6 +14,17 @@ export default function Cart() {
   const defaultAddress = addresses.find(a => a.isDefault);
   const deliveryFee = cartTotal > 0 ? 1.99 : 0;
   const grandTotal = cartTotal + deliveryFee;
+
+  // Senior Frontend Fix: Body Scroll Lock
+  useEffect(() => {
+    if (isCartOpen) {
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalStyle;
+      };
+    }
+  }, [isCartOpen]);
 
   const handleCheckout = () => {
     setCheckoutError('');
@@ -44,7 +55,7 @@ export default function Cart() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={toggleCart}
-            className="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/60 z-[60] backdrop-blur-sm"
           />
 
           {/* Cart Panel */}
@@ -52,8 +63,8 @@ export default function Cart() {
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed top-0 right-0 h-[100dvh] w-full max-w-md bg-gray-50 shadow-2xl z-50 flex flex-col border-l border-gray-200 overscroll-contain"
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed top-0 right-0 h-[100dvh] w-full max-w-md bg-white z-[70] flex flex-col shadow-[-10px_0_30px_rgba(0,0,0,0.1)] overscroll-none"
           >
             {/* Header */}
             <div className="flex-none flex items-center justify-between p-4 bg-white border-b border-gray-100 shadow-sm z-10">
