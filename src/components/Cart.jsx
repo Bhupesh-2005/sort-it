@@ -53,10 +53,10 @@ export default function Cart() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed top-0 right-0 h-full w-full max-w-md bg-gray-50 shadow-2xl z-50 flex flex-col border-l border-gray-200"
+            className="fixed top-0 right-0 h-[100dvh] w-full max-w-md bg-gray-50 shadow-2xl z-50 flex flex-col border-l border-gray-200 overscroll-contain"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-4 bg-white border-b border-gray-100 shadow-sm z-10">
+            <div className="flex-none flex items-center justify-between p-4 bg-white border-b border-gray-100 shadow-sm z-10">
               <h2 className="text-xl font-extrabold flex items-center gap-2 text-gray-900">
                 <ShoppingBag size={20} className="text-primary" /> My Cart
               </h2>
@@ -66,7 +66,7 @@ export default function Cart() {
             </div>
 
             {/* Cart Items */}
-            <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4">
+            <div className="flex-1 overflow-y-auto p-4 pb-8 flex flex-col gap-4 min-h-0 basis-0">
               {/* Delivery Address Banner */}
               {cartItems.length > 0 && (
                 <div className="bg-white p-3 rounded-2xl border border-gray-100 shadow-sm flex items-start gap-3">
@@ -145,7 +145,7 @@ export default function Cart() {
 
             {/* Footer Checkout */}
             {cartItems.length > 0 && (
-              <div className="p-4 bg-white border-t border-gray-100 shadow-[0_-4px_10px_rgba(0,0,0,0.02)] relative">
+              <div className="flex-none p-4 bg-white border-t border-gray-100 shadow-[0_-4px_10px_rgba(0,0,0,0.02)] relative">
                 {checkoutError && (
                   <div className="absolute -top-12 left-4 right-4 bg-red-500 text-white text-xs font-bold py-2 px-4 rounded-xl shadow-lg text-center animate-bounce">
                     {checkoutError}
