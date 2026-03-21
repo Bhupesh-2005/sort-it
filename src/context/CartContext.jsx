@@ -16,7 +16,6 @@ export function CartProvider({ children }) {
       }
       return [...prev, { ...product, quantity: 1 }];
     });
-    setIsCartOpen(true);
   };
 
   const updateQuantity = (id, delta) => {
